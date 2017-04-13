@@ -21,12 +21,12 @@ public class UserImpl implements IUser {
     }
 
     @Override
-    public boolean add(User model) {
+    public boolean add(User user) {
         return false;
     }
 
     @Override
-    public boolean update(User model) {
+    public boolean update(User user) {
         return false;
     }
 
