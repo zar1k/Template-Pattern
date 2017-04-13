@@ -3,19 +3,29 @@ package myweb.models;
 import java.util.Objects;
 
 /**
+ * The type User
+ * <p>
  * Created by And.Zarazka on 12.04.2017.
  */
-public class User extends Model{
+public class User extends Model {
     private String login;
     private String password;
     private String firstName;
     private String lastName;
     private int age;
 
+    /**
+     * Instantiates a new User.
+     */
     public User() {
         super();
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param id the User id
+     */
     public User(int id) {
         super(id);
     }
@@ -77,6 +87,11 @@ public class User extends Model{
         return Objects.hash(getLogin(), getPassword(), getFirstName(), getLastName(), getAge());
     }
 
+    /**
+     * Needed for logging
+     *
+     * @return User description
+     */
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("User{");
