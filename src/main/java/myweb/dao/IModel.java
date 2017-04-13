@@ -15,9 +15,9 @@ public interface IModel<T extends Model> {
 
     Model getById(int id);
 
-    boolean add(T model);
+    void add(T model);
 
-    boolean update(T model);
+    void update(T model);
 
-    boolean delete(int id);
+    void delete(int id);
 }
