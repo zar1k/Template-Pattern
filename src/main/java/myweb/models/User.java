@@ -4,7 +4,6 @@ import java.util.Objects;
 
 /**
  * The type User
- * <p>
  * Created by And.Zarazka on 12.04.2017.
  */
 public class User extends Model {
@@ -13,6 +12,7 @@ public class User extends Model {
     private String firstName;
     private String lastName;
     private int age;
+    private Role role;
 
     /**
      * Instantiates a new User.
@@ -70,6 +70,14 @@ public class User extends Model {
         this.age = age;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -94,13 +102,14 @@ public class User extends Model {
      */
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("User{");
-        sb.append("login='").append(login).append('\'');
-        sb.append(", password='").append(password).append('\'');
-        sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", age=").append(age);
-        sb.append('}');
-        return sb.toString();
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", role=" + role.getId() +
+                '}';
     }
 }
