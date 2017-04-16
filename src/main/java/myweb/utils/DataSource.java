@@ -1,4 +1,4 @@
-package myweb.db;
+package myweb.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -9,7 +9,6 @@ import java.util.Properties;
 
 /**
  * The class provides methods for creating and managing a connection pool to a database
- * <p>
  * Created by JOB on 13.04.2017.
  */
 public class DataSource {
@@ -63,12 +62,12 @@ public class DataSource {
     }
 
     /**
-     * Gets db properties
+     * Gets utils properties
      *
      * @return the databases properties
      * @throws IOException by failed or interrupted I/O operations.
      */
-    public Properties getProperties() throws IOException {
+    private final Properties getProperties() throws IOException {
         Properties props = new Properties();
         props.load(DataSource.class.getResourceAsStream("/db.properties"));
         if (props == null) {
@@ -82,7 +81,7 @@ public class DataSource {
      *
      * @throws Exception
      */
-    private void createPool() throws Exception {
+    private final void createPool() throws Exception {
         Properties props = getProperties();
         cpds = new ComboPooledDataSource();
         cpds.setDriverClass(props.getProperty("driver"));

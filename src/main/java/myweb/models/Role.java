@@ -19,12 +19,21 @@ public class Role extends Model {
     }
 
     /**
-     * Instantiates a new User.
+     * Instantiates a new Role
      *
      * @param id the Role id
      */
     public Role(int id) {
         super(id);
+    }
+
+    /**
+     * Instantiates a new Role
+     *
+     * @param name the Role name
+     */
+    public Role(String name) {
+        this.name = name;
     }
 
     public String getName() {

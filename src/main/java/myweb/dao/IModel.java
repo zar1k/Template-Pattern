@@ -11,13 +11,13 @@ import java.util.List;
  * @param <T> the type parameter
  */
 public interface IModel<T extends Model> {
-    List<T> getAll();
+    List<Model> getAll();
 
-    T getById(int id);
+    List<Model> getById(int id);
 
-    void add(T model);
+    void create(T t);
 
-    void update(T model);
+    void update(T t);
 
     void delete(int id);
 }
