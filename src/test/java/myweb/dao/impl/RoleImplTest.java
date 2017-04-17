@@ -11,6 +11,9 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
+ * Tests run one at a time! The test data is taken from the database.
+ * The database assigns the object identifiers automatically.
+ * <p>
  * Created by And.Zarazka on 16.04.2017.
  */
 public class RoleImplTest {
@@ -22,7 +25,7 @@ public class RoleImplTest {
 
     @Test
     public void whenGetByIdRole() throws Exception {
-        int id = 1;
+        int id = 4; // Object ID in the database
         String testName = "TEST_GET_BY_ID";
         Role newRole = new Role(testName);
         RoleImpl role = new RoleImpl();
@@ -53,22 +56,22 @@ public class RoleImplTest {
         RoleImpl role = new RoleImpl();
         role.create(newRole);
         // Get by name "NEW_ROLE_NAME"
-        List<Model> roles = role.getByName(newName);
-        Role returnRole = (Role) roles.get(0);
+        List<Model> newRoles = role.getByName(newName);
+        Role returnRole = (Role) newRoles.get(0);
         // Update Role
         String updateName = "NEW_UPDATE_NAME";
         returnRole.setName(updateName);
         role.update(returnRole);
         // Get by name "NEW_UPDATE_NAME"
-        List<Model> roles1 = role.getByName(updateName);
-        Role returnRole1 = (Role) roles1.get(0);
+        List<Model> updateRoles = role.getByName(updateName);
+        Role returnAndUpdateRole = (Role) updateRoles.get(0);
 
-        assertThat(returnRole, is(returnRole1));
+        assertThat(returnRole, is(returnAndUpdateRole));
     }
 
     @Test
     public void whenDeleteRole() throws Exception {
-        int roleID = 21;
+        int roleID = 21; // Object ID in the database
         String roleName = "DELETE";
         Role newRole = new Role(roleName);
 
@@ -77,8 +80,8 @@ public class RoleImplTest {
 
         roleImpl.delete(roleID);
         List<Model> roles = roleImpl.getById(roleID);
-        boolean b =  roles.isEmpty();
-        assertTrue(b);
+        boolean result = roles.isEmpty();
+        assertTrue(result);
     }
 
 }
