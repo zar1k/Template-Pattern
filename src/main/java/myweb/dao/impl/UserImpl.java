@@ -15,6 +15,7 @@ import java.util.List;
 public class UserImpl implements IUser {
     private static final String GET_ALL = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users";
     private static final String GET_BY_ID = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users WHERE id = ?";
+    private static final String GET_BY_LOGIN = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users WHERE login = ?";
     private static final String CREATE = "INSERT INTO meloman_db.users (login, password, first_name, last_name, age, role_id) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String UPDATE = "UPDATE meloman_db.users SET login = ?, password = ?, first_name = ?, last_name = ?, age = ?, role_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM meloman_db.users WHERE id = ?";
@@ -51,5 +52,11 @@ public class UserImpl implements IUser {
     public void delete(int id) {
         Template template = new UserTemplate();
         template.execute(instance, DELETE, id);
+    }
+
+    @Override
+    public List<Model> getByLogin(String login) {
+        Template template = new UserTemplate();
+        return template.executeAndReturn(instance, GET_BY_LOGIN, login);
     }
 }

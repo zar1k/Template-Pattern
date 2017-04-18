@@ -11,29 +11,32 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
- * Tests run one at a time! The test data is taken from the database.
+ * The test data is taken from the database.
  * The database assigns the object identifiers automatically.
  * <p>
  * Created by And.Zarazka on 16.04.2017.
  */
 public class RoleImplTest {
     @Test
-    public void getAll() throws Exception {
+    public void whenGetAllRole() throws Exception {
         RoleImpl role = new RoleImpl();
-        assertNotNull(role.getAll());
+        boolean result = role.getAll().isEmpty();
+        assertTrue(!result);
     }
 
     @Test
     public void whenGetByIdRole() throws Exception {
-        int id = 4; // Object ID in the database
         String testName = "TEST_GET_BY_ID";
         Role newRole = new Role(testName);
         RoleImpl role = new RoleImpl();
         role.create(newRole);
 
-        List<Model> roles = role.getById(id);
-        Role returnRole = (Role) roles.get(0);
-        assertThat(newRole, is(returnRole));
+        List<Model> rolesByName = role.getByName(testName);
+        Role returnRoleByName = (Role) rolesByName.get(0);
+        int id = returnRoleByName.getId();
+        List<Model> rolesById = role.getById(id);
+        Role returnRoleById = (Role) rolesById.get(0);
+        assertThat(newRole, is(returnRoleById));
     }
 
     @Test
@@ -71,12 +74,15 @@ public class RoleImplTest {
 
     @Test
     public void whenDeleteRole() throws Exception {
-        int roleID = 21; // Object ID in the database
         String roleName = "DELETE";
         Role newRole = new Role(roleName);
 
         RoleImpl roleImpl = new RoleImpl();
         roleImpl.create(newRole);
+
+        List<Model> models = roleImpl.getByName(roleName);
+        Role role = (Role) models.get(0);
+        int roleID = role.getId();
 
         roleImpl.delete(roleID);
         List<Model> roles = roleImpl.getById(roleID);

@@ -27,10 +27,19 @@ public class DataSource {
 
     private DataSource() {
         try {
-            createPool();
+            init();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * init
+     *
+     * @throws Exception the exception
+     */
+    public void init() throws Exception {
+        createPool();
     }
 
     /**
@@ -79,7 +88,7 @@ public class DataSource {
     /**
      * Create a pool
      *
-     * @throws Exception
+     * @throws Exception the exception
      */
     private final void createPool() throws Exception {
         Properties props = getProperties();
