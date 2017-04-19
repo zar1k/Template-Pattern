@@ -1,7 +1,7 @@
 package myweb.dao.impl;
 
 import myweb.dao.IUser;
-import myweb.db.DataSource;
+import myweb.utils.DataSource;
 import myweb.models.Role;
 import myweb.models.User;
 
@@ -22,19 +22,19 @@ public class UserImpl implements IUser {
         PreparedStatement statement;
         ResultSet resultSet;
         try {
-            String sql = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users";
+            String sql = "SELECT * FROM template_pattern_db.users";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 User user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setFirstName(resultSet.getString("first_name"));
-                user.setLastName(resultSet.getString("last_name"));
-                user.setAge(resultSet.getInt("age"));
-                user.setRole(new Role(resultSet.getInt("role_id")));
+                user.setId(resultSet.getInt("ID"));
+                user.setLogin(resultSet.getString("LOGIN"));
+                user.setPassword(resultSet.getString("PASSWORD"));
+                user.setFirstName(resultSet.getString("FIRST_NAME"));
+                user.setLastName(resultSet.getString("LAST_NAME"));
+                user.setAge(resultSet.getInt("AGE"));
+                user.setRole(new Role(resultSet.getInt("ROLE_ID")));
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -50,20 +50,20 @@ public class UserImpl implements IUser {
         PreparedStatement statement;
         ResultSet resultSet;
         try {
-            String sql = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users WHERE id = ?";
+            String sql = "SELECT ID, LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, AGE, ROLE_ID FROM template_pattern_db.users WHERE ID = ?";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 user = new User();
-                user.setId(resultSet.getInt("id"));
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setFirstName(resultSet.getString("first_name"));
-                user.setLastName(resultSet.getString("last_name"));
-                user.setAge(resultSet.getInt("age"));
-                user.setRole(new Role(resultSet.getInt("role_id")));
+                user.setId(resultSet.getInt("ID"));
+                user.setLogin(resultSet.getString("LOGIN"));
+                user.setPassword(resultSet.getString("PASSWORD"));
+                user.setFirstName(resultSet.getString("FIRST_NAME"));
+                user.setLastName(resultSet.getString("LAST_NAME"));
+                user.setAge(resultSet.getInt("AGE"));
+                user.setRole(new Role(resultSet.getInt("ROLE_ID")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class UserImpl implements IUser {
         Connection connection;
         PreparedStatement statement;
         try {
-            String sql = "INSERT INTO meloman_db.users (login, password, first_name, last_name, age, role_id) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO template_pattern_db.users (LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, AGE, ROLE_ID) VALUES (?, ?, ?, ?, ?, ?)";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setString(1, user.getLogin());
@@ -96,7 +96,7 @@ public class UserImpl implements IUser {
         Connection connection;
         PreparedStatement statement;
         try {
-            String sql = "UPDATE meloman_db.users SET login = ?, password = ?, first_name = ?, last_name = ?, age = ?, role_id = ? WHERE id = ?";
+            String sql = "UPDATE template_pattern_db.users SET LOGIN = ?, PASSWORD = ?, FIRST_NAME = ?, LAST_NAME = ?, AGE = ?, ROLE_ID = ? WHERE ID = ?";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setString(1, user.getLogin());
@@ -117,7 +117,7 @@ public class UserImpl implements IUser {
         Connection connection;
         PreparedStatement statement;
         try {
-            String sql = "DELETE FROM meloman_db.users WHERE id = ?";
+            String sql = "DELETE FROM template_pattern_db.users WHERE ID = ?";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);

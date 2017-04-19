@@ -1,4 +1,4 @@
-package myweb.db;
+package myweb.utils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -28,10 +28,19 @@ public class DataSource {
 
     private DataSource() {
         try {
-            createPool();
+            init();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * init
+     *
+     * @throws Exception the exception
+     */
+    public void init() throws Exception {
+        createPool();
     }
 
     /**
@@ -63,12 +72,12 @@ public class DataSource {
     }
 
     /**
-     * Gets db properties
+     * Gets utils properties
      *
      * @return the databases properties
      * @throws IOException by failed or interrupted I/O operations.
      */
-    public Properties getProperties() throws IOException {
+    private final Properties getProperties() throws IOException {
         Properties props = new Properties();
         props.load(DataSource.class.getResourceAsStream("/db.properties"));
         if (props == null) {
@@ -80,9 +89,9 @@ public class DataSource {
     /**
      * Create a pool
      *
-     * @throws Exception
+     * @throws Exception the exception
      */
-    private void createPool() throws Exception {
+    private final void createPool() throws Exception {
         Properties props = getProperties();
         cpds = new ComboPooledDataSource();
         cpds.setDriverClass(props.getProperty("driver"));

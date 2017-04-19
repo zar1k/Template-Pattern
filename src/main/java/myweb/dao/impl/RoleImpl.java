@@ -1,7 +1,7 @@
 package myweb.dao.impl;
 
 import myweb.dao.IRole;
-import myweb.db.DataSource;
+import myweb.utils.DataSource;
 import myweb.models.Role;
 
 import java.sql.*;
@@ -21,14 +21,14 @@ public class RoleImpl implements IRole {
         PreparedStatement statement;
         ResultSet resultSet;
         try {
-            String sql = "SELECT * FROM meloman_db.role";
+            String sql = "SELECT * FROM template_pattern_db.role";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Role role = new Role();
-                role.setId(resultSet.getInt("id"));
-                role.setName(resultSet.getString("role_name"));
+                role.setId(resultSet.getInt("ID"));
+                role.setName(resultSet.getString("NAME"));
                 roles.add(role);
             }
         } catch (SQLException e) {
@@ -44,14 +44,14 @@ public class RoleImpl implements IRole {
         PreparedStatement statement;
         ResultSet resultSet;
         try {
-            String sql = "SELECT * FROM meloman_db.role WHERE id = ?";
+            String sql = "SELECT * FROM template_pattern_db.role WHERE ID = ?";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 role = new Role();
-                role.setName(resultSet.getString("role_name"));
+                role.setName(resultSet.getString("NAME"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class RoleImpl implements IRole {
         Connection connection;
         PreparedStatement statement;
         try {
-            String sql = "INSERT INTO meloman_db.role (role_name) VALUES (?)";
+            String sql = "INSERT INTO template_pattern_db.role (NAME) VALUES (?)";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setString(1, role.getName());
@@ -79,7 +79,7 @@ public class RoleImpl implements IRole {
         Connection connection;
         PreparedStatement statement;
         try {
-            String sql = "UPDATE meloman_db.role SET role_name = ? WHERE id = ?";
+            String sql = "UPDATE template_pattern_db.role SET NAME = ? WHERE ID = ?";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setString(1, role.getName());
@@ -95,7 +95,7 @@ public class RoleImpl implements IRole {
         Connection connection;
         PreparedStatement statement;
         try {
-            String sql = "DELETE FROM meloman_db.role WHERE id = ?";
+            String sql = "DELETE FROM template_pattern_db.role WHERE ID = ?";
             connection = dataSource.getConnection();
             statement = connection.prepareStatement(sql);
             statement.setInt(1, id);
