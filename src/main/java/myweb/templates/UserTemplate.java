@@ -19,13 +19,13 @@ public class UserTemplate extends Template {
         List<Model> models = new ArrayList<>();
         while (rs.next()) {
             User user = new User();
-            user.setId(rs.getInt("id"));
-            user.setLogin(rs.getString("login"));
-            user.setPassword(rs.getString("password"));
-            user.setFirstName(rs.getString("first_name"));
-            user.setLastName(rs.getString("last_name"));
-            user.setAge(rs.getInt("age"));
-            user.setRole(new Role(rs.getInt("role_id")));
+            user.setId(rs.getInt("ID"));
+            user.setLogin(rs.getString("LOGIN"));
+            user.setPassword(rs.getString("PASSWORD"));
+            user.setFirstName(rs.getString("FIRST_NAME"));
+            user.setLastName(rs.getString("LAST_NAME"));
+            user.setAge(rs.getInt("AGE"));
+            user.setRole(new Role(rs.getInt("ROLE_ID")));
             models.add(user);
         }
         return models;

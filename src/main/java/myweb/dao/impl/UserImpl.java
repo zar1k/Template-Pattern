@@ -13,12 +13,12 @@ import java.util.List;
  * Created by And.Zarazka on 12.04.2017.
  */
 public class UserImpl implements IUser {
-    private static final String GET_ALL = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users";
-    private static final String GET_BY_ID = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users WHERE id = ?";
-    private static final String GET_BY_LOGIN = "SELECT id, login, password, first_name, last_name, age, role_id FROM meloman_db.users WHERE login = ?";
-    private static final String CREATE = "INSERT INTO meloman_db.users (login, password, first_name, last_name, age, role_id) VALUES (?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE = "UPDATE meloman_db.users SET login = ?, password = ?, first_name = ?, last_name = ?, age = ?, role_id = ? WHERE id = ?";
-    private static final String DELETE = "DELETE FROM meloman_db.users WHERE id = ?";
+    private static final String GET_ALL = "SELECT ID, LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, AGE, ROLE_ID FROM template_pattern_db.users";
+    private static final String GET_BY_ID = "SELECT ID, LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, AGE, ROLE_ID FROM template_pattern_db.users WHERE ID = ?";
+    private static final String GET_BY_LOGIN = "SELECT ID, LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, AGE, ROLE_ID FROM template_pattern_db.users WHERE LOGIN = ?";
+    private static final String CREATE = "INSERT INTO template_pattern_db.users (LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, AGE, ROLE_ID) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE template_pattern_db.users SET LOGIN = ?, PASSWORD = ?, FIRST_NAME = ?, LAST_NAME = ?, AGE = ?, ROLE_ID = ? WHERE ID = ?";
+    private static final String DELETE = "DELETE FROM template_pattern_db.users WHERE ID = ?";
 
     private DataSource instance = DataSource.getInstance();
 

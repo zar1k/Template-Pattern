@@ -13,12 +13,12 @@ import java.util.List;
  * Created by JOB on 14.04.2017.
  */
 public class RoleImpl implements IRole {
-    private static final String GET_ALL = "SELECT * FROM meloman_db.role";
-    private static final String GET_BY_ID = "SELECT * FROM meloman_db.role WHERE id = ?";
-    private static final String CREATE = "INSERT INTO meloman_db.role (role_name) VALUES (?)";
-    private static final String UPDATE = "UPDATE meloman_db.role SET role_name = ? WHERE id = ?";
-    private static final String DELETE = "DELETE FROM meloman_db.role WHERE id = ?";
-    private static final String GET_BY_NAME = "SELECT * FROM meloman_db.role WHERE role_name = ?";
+    private static final String GET_ALL = "SELECT * FROM template_pattern_db.role";
+    private static final String GET_BY_ID = "SELECT * FROM template_pattern_db.role WHERE ID = ?";
+    private static final String CREATE = "INSERT INTO template_pattern_db.role (NAME) VALUES (?)";
+    private static final String UPDATE = "UPDATE template_pattern_db.role SET NAME = ? WHERE ID = ?";
+    private static final String DELETE = "DELETE FROM template_pattern_db.role WHERE ID = ?";
+    private static final String GET_BY_NAME = "SELECT * FROM template_pattern_db.role WHERE NAME = ?";
 
     private DataSource instance = DataSource.getInstance();
 

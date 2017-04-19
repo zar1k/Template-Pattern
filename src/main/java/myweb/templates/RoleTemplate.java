@@ -18,8 +18,8 @@ public class RoleTemplate extends Template {
         List<Model> models = new ArrayList<>();
         while (rs.next()) {
             Role role = new Role();
-            role.setId(rs.getInt("id"));
-            role.setName(rs.getString("role_name"));
+            role.setId(rs.getInt("ID"));
+            role.setName(rs.getString("NAME"));
             models.add(role);
         }
         return models;
