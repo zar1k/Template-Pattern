@@ -26,17 +26,17 @@ public class UserImplTest {
     @Test
     public void whenGetByIdUser() throws Exception {
         User newUser = new User();
-        newUser.setLogin("TEST");
-        newUser.setPassword("TEST");
-        newUser.setFirstName("TEST");
-        newUser.setLastName("TEST");
+        newUser.setLogin("TEST_USER");
+        newUser.setPassword("TEST_USER");
+        newUser.setFirstName("TEST_USER");
+        newUser.setLastName("TEST_USER");
         newUser.setAge(15);
         newUser.setRole(new Role(3));
 
         UserImpl userImpl = new UserImpl();
         userImpl.create(newUser);
 
-        List<Model> userByLogin = userImpl.getByLogin("TEST");
+        List<Model> userByLogin = userImpl.getByLogin("TEST_USER");
         User returnUserByName = (User) userByLogin.get(0);
         int id = returnUserByName.getId();
 
@@ -49,17 +49,17 @@ public class UserImplTest {
     @Test
     public void whenCreateUser() throws Exception {
         User newUser = new User();
-        newUser.setLogin("NEW_TEST_USER");
-        newUser.setPassword("NEW_TEST_USER");
-        newUser.setFirstName("NEW_TEST_USER");
-        newUser.setLastName("NEW_TEST_USER");
+        newUser.setLogin("CREATE_NEW_USER");
+        newUser.setPassword("CREATE_NEW_USER");
+        newUser.setFirstName("CREATE_NEW_USER");
+        newUser.setLastName("CREATE_NEW_USER");
         newUser.setAge(25);
         newUser.setRole(new Role(1));
 
         UserImpl userImpl = new UserImpl();
         userImpl.create(newUser);
 
-        List<Model> userByLogin = userImpl.getByLogin("NEW_TEST_USER");
+        List<Model> userByLogin = userImpl.getByLogin("CREATE_NEW_USER");
         User returnUser = (User) userByLogin.get(0);
         assertThat(newUser, is(returnUser));
     }
@@ -81,10 +81,10 @@ public class UserImplTest {
         User returnUserByLogin = (User) userByLogin.get(0);
         int id = returnUserByLogin.getId();
 
-        returnUserByLogin.setLogin("LOGIN");
-        returnUserByLogin.setPassword("PASSWORD");
-        returnUserByLogin.setFirstName("PETER");
-        returnUserByLogin.setLastName("JOE");
+        returnUserByLogin.setLogin("UPDATE_LOGIN");
+        returnUserByLogin.setPassword("UPDATE_PASSWORD");
+        returnUserByLogin.setFirstName("UPDATE_NAME");
+        returnUserByLogin.setLastName("UPDATE_SURNAME");
         returnUserByLogin.setAge(25);
         returnUserByLogin.setRole(new Role(3));
         userImpl.update(returnUserByLogin);
@@ -98,17 +98,17 @@ public class UserImplTest {
     @Test
     public void whenDeleteUser() throws Exception {
         User newUser = new User();
-        newUser.setLogin("TEST_USER");
-        newUser.setPassword("TEST_USER");
-        newUser.setFirstName("TEST_USER");
-        newUser.setLastName("TEST_USER");
+        newUser.setLogin("TMP_USER");
+        newUser.setPassword("TMP_USER");
+        newUser.setFirstName("TMP_USER");
+        newUser.setLastName("TMP_USER");
         newUser.setAge(55);
         newUser.setRole(new Role(2));
 
         UserImpl userImpl = new UserImpl();
         userImpl.create(newUser);
 
-        List<Model> models = userImpl.getByLogin("TEST_USER");
+        List<Model> models = userImpl.getByLogin("TMP_USER");
         User user = (User) models.get(0);
         int userId = user.getId();
 

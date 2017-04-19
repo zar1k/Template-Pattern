@@ -37,15 +37,15 @@ public class UserImpl implements IUser {
     @Override
     public void create(User user) {
         Template template = new UserTemplate();
-        template.execute(instance, CREATE, user.getLogin(), user.getPassword(), user.getFirstName(),
-                user.getLastName(), user.getAge(), user.getRole().getId());
+        template.execute(instance, CREATE, user.getLogin().trim(), user.getPassword().trim(), user.getFirstName().trim(),
+                user.getLastName().trim(), user.getAge(), user.getRole().getId());
     }
 
     @Override
     public void update(User user) {
         Template template = new UserTemplate();
-        template.execute(instance, UPDATE, user.getLogin(), user.getPassword(), user.getFirstName(),
-                user.getLastName(), user.getAge(), user.getRole().getId(), user.getId());
+        template.execute(instance, UPDATE, user.getLogin().trim(), user.getPassword().trim(), user.getFirstName().trim(),
+                user.getLastName().trim(), user.getAge(), user.getRole().getId(), user.getId());
     }
 
     @Override
@@ -57,6 +57,6 @@ public class UserImpl implements IUser {
     @Override
     public List<Model> getByLogin(String login) {
         Template template = new UserTemplate();
-        return template.executeAndReturn(instance, GET_BY_LOGIN, login);
+        return template.executeAndReturn(instance, GET_BY_LOGIN, login.trim());
     }
 }

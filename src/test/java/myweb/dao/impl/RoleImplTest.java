@@ -26,7 +26,7 @@ public class RoleImplTest {
 
     @Test
     public void whenGetByIdRole() throws Exception {
-        String testName = "TEST_GET_BY_ID";
+        String testName = "GET_BY_ID_ROLE";
         Role newRole = new Role(testName);
         RoleImpl role = new RoleImpl();
         role.create(newRole);
@@ -41,7 +41,7 @@ public class RoleImplTest {
 
     @Test
     public void whenCreateNewRole() throws Exception {
-        String testName = "TEST_ROLE_NAME";
+        String testName = "CREATE_NEW_ROLE";
         Role newRole = new Role(testName);
         RoleImpl role = new RoleImpl();
         role.create(newRole);
@@ -54,7 +54,7 @@ public class RoleImplTest {
     @Test
     public void whenUpdateRole() throws Exception {
         // Create new Role
-        String newName = "NEW_ROLE_NAME";
+        String newName = "NEW_ROLE";
         Role newRole = new Role(newName);
         RoleImpl role = new RoleImpl();
         role.create(newRole);
@@ -62,7 +62,7 @@ public class RoleImplTest {
         List<Model> newRoles = role.getByName(newName);
         Role returnRole = (Role) newRoles.get(0);
         // Update Role
-        String updateName = "NEW_UPDATE_NAME";
+        String updateName = "UPDATE_ROLE";
         returnRole.setName(updateName);
         role.update(returnRole);
         // Get by name "NEW_UPDATE_NAME"
@@ -74,7 +74,7 @@ public class RoleImplTest {
 
     @Test
     public void whenDeleteRole() throws Exception {
-        String roleName = "DELETE";
+        String roleName = "DELETE_ROLE";
         Role newRole = new Role(roleName);
 
         RoleImpl roleImpl = new RoleImpl();

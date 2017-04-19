@@ -37,13 +37,13 @@ public class RoleImpl implements IRole {
     @Override
     public void create(Role role) {
         Template template = new RoleTemplate();
-        template.execute(instance, CREATE, role.getName());
+        template.execute(instance, CREATE, role.getName().trim());
     }
 
     @Override
     public void update(Role role) {
         Template template = new RoleTemplate();
-        template.execute(instance, UPDATE, role.getName(), role.getId());
+        template.execute(instance, UPDATE, role.getName().trim(), role.getId());
     }
 
     @Override
@@ -55,6 +55,6 @@ public class RoleImpl implements IRole {
     @Override
     public List<Model> getByName(String name) {
         Template template = new RoleTemplate();
-        return template.executeAndReturn(instance, GET_BY_NAME, name);
+        return template.executeAndReturn(instance, GET_BY_NAME, name.trim());
     }
 }
