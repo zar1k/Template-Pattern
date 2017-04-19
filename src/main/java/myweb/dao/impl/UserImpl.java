@@ -10,6 +10,7 @@ import myweb.templates.UserTemplate;
 import java.util.List;
 
 /**
+ * The UserImpl class implementing CRUD methods
  * Created by And.Zarazka on 12.04.2017.
  */
 public class UserImpl implements IUser {

@@ -10,6 +10,7 @@ import myweb.templates.Template;
 import java.util.List;
 
 /**
+ * The RoleImpl class implementing CRUD methods
  * Created by JOB on 14.04.2017.
  */
 public class RoleImpl implements IRole {
